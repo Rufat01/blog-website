@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animate__animated.animate__slideInDown {
+    --animate-duration: 0.6s;
+  }
