@@ -43,7 +43,7 @@ const posts = [
 const Posts = () => {
     console.log(posts);
   return (
-    <div className="flex flex-col mt-24 sm:mt-0 sm:px-5 md:px-5">
+    <div className="flex flex-col mt-24 sm:mt-0 sm:px-5 md:px-5  max-w-[1440px] my-0 mx-auto">
          <h4 className="font-bold text-2xl mb-8">Latest Post</h4>
          <div className="flex flex-wrap sm:flex-col sm:flex-nowrap gap-5 mb-8 justify-center">
             {posts.map((post) => (
@@ -66,7 +66,7 @@ const Post = ({data}) => {
                  </div>
                  <div>
                     <span className="text-center text-sm py-1 px-[10px] text-[#4B6BFB] bg-[#4B6BFB]/10 rounded-md">{data.category}</span>
-                    <h1 className="text-2xl font-semibold mt-4 mb-5">{data.title}</h1>
+                    <h1 className="text-lg font-semibold mt-4 mb-5">{data.title}</h1>
                     <div className="flex items-center gap-5">
                         <div className="flex items-center gap-3">
                             <img src={User} alt="" />

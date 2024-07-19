@@ -2,13 +2,15 @@ import Header from "./components/Header"
 import 'animate.css';
 import Hero from "./components/Hero";
 import Posts from "./components/Posts";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="max-w-[1440px] my-0 mx-auto">
+    <div>
         <Header />
         <Hero />
         <Posts />
+        <Footer />
     </div>
   )
 }

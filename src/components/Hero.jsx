@@ -3,7 +3,7 @@ import User from '../assets/User.png'
 
 const Hero = () => {
   return (
-    <div className='relative w-full rounded-xl -z-10'>
+    <div className='relative w-full rounded-xl -z-10 max-w-[1440px] my-0 mx-auto'>
       <img src={HeroImg} className='w-full object-cover rounded-xl sm:h-[250px] sm:rounded-none md:rounded-none' alt="" />
       <div className='sm:px-5'>
       <div className='absolute flex flex-col max-w-[600px] rounded-xl bg-white p-10 bottom-[-50px] shadow-md left-16 md:w-[450px] sm:w-full sm:relative sm:top-[-80px] sm:left-0 sm:p-7'>
