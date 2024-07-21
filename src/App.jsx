@@ -1,18 +1,18 @@
-import Header from "./components/Header"
-import 'animate.css';
-import Hero from "./components/Hero";
-import Posts from "./components/Posts";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Blog from "./Pages/Blog";
+import AppLayout from "./Pages/AppLayout";
+import "animate.css";
 
 const App = () => {
   return (
-    <div>
-        <Header />
-        <Hero />
-        <Posts />
-        <Footer />
-    </div>
-  )
-}
+    <Routes>
+      <Route path="/" element={<AppLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/:blogTitle" element={<Blog />}/>
+      </Route>
+    </Routes>
+  );
+};
 
-export default App
+export default App;

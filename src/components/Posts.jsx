@@ -1,10 +1,9 @@
-import { useId } from "react"
+import { Link } from "react-router-dom"
 import Post1 from '../assets/Post1.png'
 import User from '../assets/User.png'
 
 const posts = [
     {
-        id: useId,
         image: Post1,
         category: 'Technology',
         title: 'The Impact of Technology on the Workplace: How Technology is Changing',
@@ -12,7 +11,13 @@ const posts = [
         publish: ''
     },
     {
-        id: useId,
+        image: Post1,
+        category: 'Biographik',
+        title: 'test2',
+        author: 'Tracey Wilsoasdsan',
+        publish: ''
+    },
+    {
         image: Post1,
         category: 'Technology',
         title: 'The Impact of Technology on the Workplace: How Technology is Changing',
@@ -20,15 +25,6 @@ const posts = [
         publish: ''
     },
     {
-        id: useId,
-        image: Post1,
-        category: 'Technology',
-        title: 'The Impact of Technology on the Workplace: How Technology is Changing',
-        author: 'Tracey Wilson',
-        publish: ''
-    },
-    {
-        id: useId,
         image: Post1,
         category: 'Technology',
         title: 'The Impact of Technology on the Workplace: How Technology is Changing',
@@ -41,7 +37,7 @@ const posts = [
 
 
 const Posts = () => {
-    console.log(posts);
+    
   return (
     <div className="flex flex-col mt-24 sm:mt-0 sm:px-5 md:px-5  max-w-[1440px] my-0 mx-auto">
          <h4 className="font-bold text-2xl mb-8">Latest Post</h4>
@@ -60,7 +56,7 @@ const Posts = () => {
 
 const Post = ({data}) => {
     return (
-            <div className="max-w-[345px] sm:max-w-full border border-[#E8E8EA] p-4 rounded-xl hover:border-[#4B6BFB] hover:shadow-md transition-all duration-300">
+            <Link to={data.title} state={data} className="max-w-[345px] sm:max-w-full border border-[#E8E8EA] p-4 rounded-xl hover:border-[#4B6BFB] hover:shadow-md transition-all duration-300">
                  <div>
                     <img src={data.image} className="mb-4" alt="" />
                  </div>
@@ -75,7 +71,7 @@ const Post = ({data}) => {
                         <p className="text-[#97989F]">August 20, 2022</p>
                     </div>
                  </div>
-             </div>
+             </Link>
     )
 }
 

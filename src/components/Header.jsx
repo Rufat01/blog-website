@@ -12,7 +12,7 @@ const Header = () => {
     <div className="h-[100px] sm:h-[78px] md:h-[105px]">
       <div className="flex justify-between items-center py-8 px-5 sm:py-5 sm:border border-gray-200 max-w-[1440px] my-0 mx-auto">
         <div>
-          <a href="#">
+          <a href="/">
             <img src={Logo} alt="" />
           </a>
         </div>
