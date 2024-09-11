@@ -1,21 +1,33 @@
 import "animate.css";
 import Hero from "../components/Hero";
 import Posts from "../components/Posts";
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
+type PostType = {
+  img: string;
+  category: string;
+  title: string;
+  content: string;
+  author: string;
+  publishDate: string;
+};
 
 const Home = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
-  const toggleDarkMode = () => {
-    setActive((prevMode) => !prevMode);
-    document.documentElement.classList.toggle("dark", !active);
-  };  
+  const getHeroPost = () => {
+    let storedPosts = JSON.parse(localStorage.getItem("post") as string)
+    setPosts(storedPosts)
+  }
+
+  useEffect(() => {
+    getHeroPost();
+  }, [])
 
   return (
     <div>
-        <Hero />
-        <Posts active={active} />
+        <Hero posts={posts} />
+        <Posts handleHeroPost={getHeroPost} />
     </div>
   )
 }

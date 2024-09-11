@@ -3,6 +3,7 @@ import Search from "../assets/Search.svg";
 import SearchLight from "../assets/SearchLight.svg";
 import Sun from "../assets/Sun.svg";
 import SunDarkMode from "../assets/SunDark.svg";
+import { Link } from "react-router-dom";
 
 type HeaderProps = {
   active: boolean,
@@ -25,10 +26,9 @@ const Header = ({active, darkMode} : HeaderProps) => {
         </div>
         <nav className="px-[116px] sm:hidden md:hidden">
           <ul className="flex items-center gap-10">
-            <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Home</a>
-            <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Blog</a>
+            <Link to="/" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
+            <Link to="blog" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
             <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Post</a>
-            <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Pages</a>
             <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
           </ul>
         </nav>
@@ -53,10 +53,9 @@ const Header = ({active, darkMode} : HeaderProps) => {
 
         <nav className={`${openMenu ? 'w-full' : 'w-0 overflow-x-hidden'} lg:hidden absolute right-0 top-[77px] md:top-[104px] transition-all duration-300 bg-gray-100/80 backdrop-blur-sm z-10`}>
           <ul className="flex items-center flex-col gap-10 py-5">
-            <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Home</a>
-            <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Blog</a>
+            <Link to="/" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
+            <Link to="/" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
             <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Post</a>
-            <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Pages</a>
             <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
           </ul>
         </nav>

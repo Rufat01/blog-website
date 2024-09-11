@@ -4,6 +4,17 @@ import Blog from "./Pages/Blog";
 import AppLayout from "./Pages/AppLayout";
 import "animate.css";
 import React, { useEffect, useState } from "react";
+import BlogList from "./Pages/BlogList";
+
+type Posts = {
+  img: string;
+  category: string;
+  title: string;
+  content: string;
+  author: string;
+  publishDate: string;
+};
+
 
 const App = () => {
   const [active, setActive] = useState<boolean>(false);
@@ -12,7 +23,6 @@ const App = () => {
   useEffect(() => {
     const el = document.querySelector("body") as HTMLBodyElement;
     const isDark = JSON.parse(localStorage.getItem("mode") as string);
-    console.log(isDark);
 
     if (isDark) {
       setMode(isDark);
@@ -38,25 +48,34 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AppLayout active={active} setActive={setActive} darkMode={darkInLocal} />,
+      element: (
+        <AppLayout
+          active={active}
+          setActive={setActive}
+          darkMode={darkInLocal}
+        />
+      ),
       children: [
         {
           path: "/",
           element: <Home />,
         },
         {
-          path: "/:blogTitle",
+          path: "/blog",
+          element: <BlogList />,
+        },
+        {
+          path: "/blog/:blogTitle",
           element: <Blog />,
         },
-      ]
+      ],
     },
-
   ]);
 
   return (
     <div>
-      <RouterProvider router={router} />
-      </div>
+        <RouterProvider router={router} />
+    </div>
   );
 };
 

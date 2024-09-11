@@ -2,12 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
   scroll-behavior: smooth;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slick-list {
+  margin: 0 -50px;
+}
+
+.slick-slide > div {
+  padding: 0px 50px;
 }
 
 .animate__animated.animate__slideInDown {

@@ -23,7 +23,7 @@ type Posts = {
       publishDate: string
 }
 
-const Posts = ({active} : {active: boolean}) => {
+const Posts = ({handleHeroPost} : {handleHeroPost: () => void}) => {
   const [img, setImg] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
@@ -66,11 +66,11 @@ const Posts = ({active} : {active: boolean}) => {
     setAuthor('')
     setOpen(false)
     setBlogsToLocal(post);
+    handleHeroPost();
     alert("Post added successfully")
   };
 
   const setBlogsToLocal = (post: Posts) => {
-    console.log(post);
     
     const isExistPost = localStorage.getItem("post");
     if (isExistPost === null) {
@@ -86,8 +86,9 @@ const Posts = ({active} : {active: boolean}) => {
   const clearFromLocal = () => {
       const request = confirm("Are you sure clear all posts?")
       if(request){
-         localStorage.removeItem("post")
+         localStorage.removeItem("post");
          setPosts([]);
+         handleHeroPost();
       }
   }
 
@@ -158,10 +159,10 @@ const Posts = ({active} : {active: boolean}) => {
   );
 };
 
-const Post = ({ data } : {data: Posts}) => {
+export const Post = ({ data } : {data: Posts}) => {
   return (
     <Link
-      to={data.title}
+      to={`/blog/${data.title}`}
       state={data}
       className="max-w-[345px] sm:max-w-full border border-[#E8E8EA] p-4 rounded-xl hover:border-[#4B6BFB] hover:shadow-md transition-all duration-300"
     >
