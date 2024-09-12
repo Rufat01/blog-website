@@ -5,6 +5,7 @@ import AppLayout from "./Pages/AppLayout";
 import "animate.css";
 import React, { useEffect, useState } from "react";
 import BlogList from "./Pages/BlogList";
+import PostList from "./Pages/PostList";
 
 type Posts = {
   img: string;
@@ -63,6 +64,10 @@ const App = () => {
         {
           path: "/blog",
           element: <BlogList />,
+        },
+        {
+          path: "/post",
+          element: <PostList />
         },
         {
           path: "/blog/:blogTitle",
