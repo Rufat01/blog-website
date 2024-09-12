@@ -28,7 +28,7 @@ const Header = ({active, darkMode} : HeaderProps) => {
           <ul className="flex items-center gap-10">
             <Link to="/" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
             <Link to="blog" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
-            <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Post</a>
+            <Link to="post" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Post</Link>
             <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
           </ul>
         </nav>
@@ -54,8 +54,8 @@ const Header = ({active, darkMode} : HeaderProps) => {
         <nav className={`${openMenu ? 'w-full' : 'w-0 overflow-x-hidden'} lg:hidden absolute right-0 top-[77px] md:top-[104px] transition-all duration-300 bg-gray-100/80 backdrop-blur-sm z-10`}>
           <ul className="flex items-center flex-col gap-10 py-5">
             <Link to="/" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
-            <Link to="/" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
-            <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Post</a>
+            <Link to="blog" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
+            <Link to="post" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Post</Link>
             <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
           </ul>
         </nav>
