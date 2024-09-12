@@ -6,6 +6,7 @@ import "animate.css";
 import React, { useEffect, useState } from "react";
 import BlogList from "./Pages/BlogList";
 import PostList from "./Pages/PostList";
+import Contact from "./Pages/Contact";
 
 type Posts = {
   img: string;
@@ -68,6 +69,10 @@ const App = () => {
         {
           path: "/post",
           element: <PostList />
+        },
+        {
+          path: "/contact",
+          element: <Contact />
         },
         {
           path: "/blog/:blogTitle",
