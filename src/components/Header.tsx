@@ -29,14 +29,14 @@ const Header = ({active, darkMode} : HeaderProps) => {
             <Link to="/" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
             <Link to="blog" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
             <Link to="post" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Post</Link>
-            <a href="" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
+            <Link to="contact" className="text-[17px] hover:text-[#4B6BFB] transition-all duration-300">Contact</Link>
           </ul>
         </nav>
         <div className="flex items-center gap-10 sm:gap-3">
             <div className="relative">
                 <input type="text" className="w-[166px] md:w-[350px] bg-[#F4F4F5] rounded-md pl-[10px] pr-[30px] py-2 sm:hidden" placeholder="Search"/>
                 <img src={active ? SearchLight : Search} className="absolute top-[9px] w-[22px] right-2 sm:static sm:w-8 sm:hidden" onClick={() => setSearch(t => !t)} alt="" />
-                <img src={active ? SunDarkMode : Sun} className="lg:hidden sm:w-9" onClick={() => darkMode((prevMode: boolean) => !prevMode)} />
+                <img src={active ? SunDarkMode : Sun} className="lg:hidden md:hidden sm:w-9" onClick={() => darkMode((prevMode: boolean) => !prevMode)} />
             </div>
             <div className={`${active ? "bg-[#4B6BFB]" : "bg-[#F4F4F5]"} switched w-12 h-7 rounded-full p-[3px] sm:hidden`} onClick={() => darkMode((prevMode: boolean) => !prevMode)}> 
                <div className={`${active ? "ml-[20px] rotate-[90deg]" : ''} w-[22px] h-[22px] bg-white flex items-center justify-center rounded-full shadow-md transition-all duration-500`}>
@@ -56,7 +56,7 @@ const Header = ({active, darkMode} : HeaderProps) => {
             <Link to="/" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Home</Link>
             <Link to="blog" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Blog</Link>
             <Link to="post" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Post</Link>
-            <a href="" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Contact</a>
+            <Link to="contact" className="text-[17px] w-full text-center hover:text-[#4B6BFB] transition-all duration-300">Contact</Link>
           </ul>
         </nav>
 
