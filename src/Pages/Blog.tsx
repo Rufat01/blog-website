@@ -7,6 +7,7 @@ const Blog = () => {
     const data = useLocation();
     const {img, category, title, content, author, publishDate} = data.state
 
+    
   return (
     <div className="max-w-[1440px] my-0 mx-auto flex justify-center">
 
