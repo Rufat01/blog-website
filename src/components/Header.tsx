@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../assets/Search.svg";
 import SearchLight from "../assets/SearchLight.svg";
 import Sun from "../assets/Sun.svg";
@@ -11,18 +11,37 @@ type HeaderProps = {
   darkMode: (prevMode: any) => void
 }
 
+type FilteredBlog = {
+  title: string
+}
+
+
 const Header = ({active, darkMode} : HeaderProps) => {
     const [search, setSearch] = useState<boolean>(false)
-    const [openMenu, setOpenMenu] = useState<boolean>(false)
+    const [openMenu, setOpenMenu] = useState<boolean>(false) 
+    const [searchBlogs, setSearchBlogs] = useState<string>('')
+    const [filteredBlog, setFilteredBlog] = useState<FilteredBlog[]>([])
+
+    const blogs = JSON.parse(localStorage.getItem("post") as string)
+
+    const handleSearch = () => {
+      const filteredData = blogs?.filter((blog: any) => blog.title.toLowerCase().includes(searchBlogs.toLowerCase()))
+      setFilteredBlog(filteredData)
+    }
+
+    useEffect(() => {
+      handleSearch();
+    }, [searchBlogs])
+    
 
     
   return (
     <div className="h-[100px] sm:h-[78px] md:h-[105px]">
       <div className="flex justify-between items-center py-8 px-5 sm:py-5 max-w-[1440px] my-0 mx-auto">
         <div>
-          <a href="/">
+          <Link to="/">
             <h1 className="text-3xl">Meta<span className="font-bold">Blog</span></h1>
-          </a>
+          </Link>
         </div>
         <nav className="px-[116px] sm:hidden md:hidden">
           <ul className="flex items-center gap-10">
@@ -34,10 +53,16 @@ const Header = ({active, darkMode} : HeaderProps) => {
         </nav>
         <div className="flex items-center gap-10 sm:gap-3">
             <div className="relative">
-                <input type="text" className="w-[166px] md:w-[350px] bg-[#F4F4F5] rounded-md pl-[10px] pr-[30px] py-2 sm:hidden" placeholder="Search"/>
-                <img src={active ? SearchLight : Search} className="absolute top-[9px] w-[22px] right-2 sm:static sm:w-8 sm:hidden" onClick={() => setSearch(t => !t)} alt="" />
+                <input type="text" value={searchBlogs} onChange={(e) => setSearchBlogs(e.target.value)} className="w-[166px] md:w-[350px] bg-[#F4F4F5] rounded-md pl-[10px] pr-[30px] py-2 sm:hidden" placeholder="Search"/>
+                <img src={active ? SearchLight : Search} className="absolute top-[9px] w-[22px] right-2 sm:left-[-35px] sm:top-1 sm:w-8" onClick={() => setSearch(t => !t)} alt="" />
                 <img src={active ? SunDarkMode : Sun} className="lg:hidden md:hidden sm:w-9" onClick={() => darkMode((prevMode: boolean) => !prevMode)} />
+                {searchBlogs.length > 0 && <div className="absolute w-full py-2 border z-10 sm:hidden left-0 bg-white">
+                    {filteredBlog?.map((blog, index) => (
+                      <Link to={`/blog/${blog.title}`} state={blog} onClick={() => setSearchBlogs('')} className="block p-2 hover:bg-gray-200 transition-all duration-300" key={index}>{blog.title}</Link>
+                    ))}
+                </div>}
             </div>
+
             <div className={`${active ? "bg-[#4B6BFB]" : "bg-[#F4F4F5]"} switched w-12 h-7 rounded-full p-[3px] sm:hidden`} onClick={() => darkMode((prevMode: boolean) => !prevMode)}> 
                <div className={`${active ? "ml-[20px] rotate-[90deg]" : ''} w-[22px] h-[22px] bg-white flex items-center justify-center rounded-full shadow-md transition-all duration-500`}>
                    <img src={Sun} alt="" />
@@ -61,8 +86,16 @@ const Header = ({active, darkMode} : HeaderProps) => {
         </nav>
 
       </div>
-      <div className="lg:hidden md:hidden sm:hidden px-5 z-20">
-         <input type="text" className={`${search ? 'animate__slideInDown block' : 'hidden'} transition-all w-full bg-[#F4F4F5] rounded-md pl-[10px] pr-[30px] py-2 mt-5 animate__animated`} placeholder="Search"/>
+      <div className="lg:hidden md:hidden z-20 relative">
+
+         <input type="text" value={searchBlogs} onChange={(e) => setSearchBlogs(e.target.value)} className={`${search ? 'animate__slideInDown block' : 'hidden'} transition-all w-full bg-[#F4F4F5] pl-[10px] pr-[30px] py-2 animate__animated`} placeholder="Search"/>
+
+         {searchBlogs.length > 0 && <div className="absolute w-full py-2 border z-10 sm:top-10 left-0 bg-white">
+                    {filteredBlog?.map((blog, index) => (
+                      <Link to={`/blog/${blog.title}`} state={blog} onClick={() => {setSearchBlogs(''), setSearch(false)}} className="block p-2 hover:bg-gray-200 transition-all duration-300" key={index}>{blog.title}</Link>
+          ))}
+         </div>}     
+  
       </div>
     </div>
   );
