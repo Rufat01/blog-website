@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className=" bg-[#E8E8EA] pt-16 sm:pt-12">
@@ -25,13 +28,13 @@ const Footer = () => {
           <h4 className="font-semibold mb-6">Quick Link</h4>
           <ul className="flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Home</a> 
+              <Link to="/" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Home</Link> 
             </li>
             <li>
               <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">About</a> 
             </li>
             <li>
-              <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Blog</a> 
+              <Link to="blog" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Blog</Link> 
             </li>
             <li>
               <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Archived</a> 
@@ -40,7 +43,7 @@ const Footer = () => {
               <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Author</a> 
             </li>
             <li>
-              <a href="#" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Contact</a> 
+              <Link to="contact" className="hover:text-[#4B6BFB] hover:ml-1 transition-all duration-300">Contact</Link> 
             </li>
           </ul>
         </div>
