@@ -1,6 +1,7 @@
 import User from '../assets/User.png'
 import { useLocation } from 'react-router-dom';
 import React from 'react';
+import { motion } from "framer-motion"
 
 const Blog = () => {
 
@@ -9,9 +10,9 @@ const Blog = () => {
 
     
   return (
-    <div className="max-w-[1440px] my-0 mx-auto flex justify-center">
+    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="max-w-[1440px] my-0 mx-auto flex justify-center">
 
-        <div className="max-w-[800px] sm:mt-8 sm:px-5 md:px-5">
+        <div className="max-w-[800px] sm:mt-8 sm:px-5 md:px-5 lg:py-9 md:py-9">
             <span className="text-center text-sm py-1 px-[10px] text-white bg-[#4B6BFB] rounded-md">{category}</span>
             <h2 className="font-bold text-4xl sm:text-3xl leading-[45px] my-5">{title}</h2>
             <div className="flex flex-col gap-5 mb-8">
@@ -29,7 +30,7 @@ const Blog = () => {
 
         </div>
 
-    </div>
+    </motion.div>
   )
 }
 

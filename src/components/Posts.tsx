@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import Select from "react-select";
 import "reactjs-popup/dist/index.css";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion"
 
 const options = [
   { value: "category", label: "Category" },
@@ -92,13 +93,12 @@ const Posts = ({handleHeroPost} : {handleHeroPost: () => void}) => {
       }
   }
 
-
   return (
     <div className="flex flex-col mt-24 sm:mt-0 sm:px-5 md:px-5 max-w-[1440px] my-0 mx-auto">
       <h4 className={`${posts.length > 0 ? 'sm:mt-0' : 'sm:mt-7'} font-bold text-2xl mb-8`}>Latest Post</h4>
       <div className="flex flex-wrap sm:flex-col sm:flex-nowrap gap-5 mb-8 justify-center">
         {posts?.map((post) => (
-          <Post data={post} key={post.title} />
+          <Post data={post} key={post.title} /> 
         ))}
       </div>
       <div className="flex justify-center mb-20">
@@ -164,8 +164,9 @@ export const Post = ({ data } : {data: Posts}) => {
     <Link
       to={`/blog/${data.title}`}
       state={data}
-      className="max-w-[345px] sm:max-w-full border border-[#E8E8EA] p-4 rounded-xl hover:border-[#4B6BFB] hover:shadow-md transition-all duration-300"
+      className="post max-w-[345px] sm:max-w-full border border-[#E8E8EA] p-4 rounded-xl hover:border-[#4B6BFB] hover:shadow-md transition-all duration-300"
     >
+      <motion.div initial={{opacity: 0, marginTop: '150px'}} animate={{opacity: 1, marginTop: '0px'}}>
       <div>
         <img src={data.img} className="mb-4 w-[350px] h-[250px] object-cover rounded-md" alt={data.title} />
       </div>
@@ -182,6 +183,7 @@ export const Post = ({ data } : {data: Posts}) => {
           <p className="text-[#97989F]">{data.publishDate}</p>
         </div>
       </div>
+      </motion.div>
     </Link>
   );
 };
