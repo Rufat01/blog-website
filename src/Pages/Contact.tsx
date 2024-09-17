@@ -1,8 +1,9 @@
 import React from 'react'
+import { motion } from "framer-motion"
 
 const Contact = () => {
   return (
-    <div className='max-w-[1440px] my-0 mx-auto py-5'>
+    <motion.div initial={{opacity: 0}} animate={{opacity: 1}}  className='max-w-[1440px] my-0 mx-auto py-5'>
         <div className='flex flex-col justify-center items-center'>
 
         <div className='max-w-[600px] flex flex-col items-center gap-4 mb-10'> 
@@ -48,7 +49,7 @@ const Contact = () => {
         </div>
 
         </div>
-    </div>
+    </motion.div>
   )
 }
 

@@ -2,6 +2,7 @@ import "animate.css";
 import Hero from "../components/Hero";
 import Posts from "../components/Posts";
 import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 type PostType = {
   img: string;
@@ -25,10 +26,10 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
+    <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
         <Hero posts={posts} />
         <Posts handleHeroPost={getHeroPost} />
-    </div>
+    </motion.div>
   )
 }
 

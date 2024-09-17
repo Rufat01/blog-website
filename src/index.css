@@ -105,6 +105,20 @@ input[type="file"]::file-selector-button:hover {
   border-right: 1px solid #e5e5e5;
 }
 
+body.dark .navbar.active{
+  background-color: #181a2a;
+}
+
+.navbar.active{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: white;
+  border-bottom: 1px solid gainsboro;
+}
+
 @media screen and (max-width: 767px) {
   .popup-content {
     width: 90%;
